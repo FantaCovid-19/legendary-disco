@@ -1,0 +1,49 @@
+{
+  "modmail": {
+    "reply": {
+      "title": "Staff Reply by {{user}}",
+      "fields": {
+        "role": "Role",
+        "noRole": "No Role"
+      },
+      "footer": "User ID: {{userId}}"
+    },
+    "dm": {
+      "noGuildsSelected": "You have not selected any server. Please select a server to use modmail. Use: </modmail guilds:1376284929721241730> to select a server.",
+      "guildNotFound": "The server you selected is not found. Please select a valid server.",
+      "noConfig": "No modmail configuration found for this server. Please contact the server owner to set up modmail. In server **{{guild}}**",
+      "noGuild": "You are not in any server. Please join a server to use modmail.",
+      "memberNotFound": "The user you selected is not found. Please select a valid user.",
+      "threadTitle": "Modmail Received",
+      "footer": "User ID: {{userId}}",
+      "successfullySent": "Modmail sent successfully to **{{user}}** in server **{{guild}}**."
+    },
+    "controlPanel": {
+      "title": "Close Modmail Thread",
+      "content": "New modmail from **{{user}}** ({{userId}}).",
+      "description": "This Control Panel allows you to manage modmail threads. You can close modmail threads and view their details. Please select an option below.",
+      "close": "Close Modmail",
+      "lock": "Lock Modmail",
+      "unlock": "Unlock Modmail",
+      "transcript": "View Transcript"
+    },
+    "close": {
+      "notFound": "No modmail thread found. Remove Manually.",
+      "title": "Control Panel Modmail",
+      "description": "This command closes the modmail thread. By **{{user}}** in server **{{guild}}**",
+      "fields": {
+        "staff": "Staff By",
+        "guild": "Server Name",
+        "date": "Date"
+      },
+      "footer": "{{guild}}",
+      "uknownGuild": "Unknown Server",
+      "threadClose": "Modmail thread closed successfully. Time taken: 5 seconds."
+    },
+    "selectGuilds": {
+      "title": "Select Server",
+      "description": "Please select a server to use modmail. Use the buttons below to select a server.",
+      "noGuilds": "You have not selected any server. Please select a server to use modmail."
+    }
+  }
+}

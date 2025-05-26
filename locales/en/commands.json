@@ -1,0 +1,13 @@
+{
+  "punish": {
+    "noUserFound": "No user found with the provided ID.",
+    "title": "Administration Panel",
+    "description": "This command allows you to manage user punishments.\n\n**Target User:** {{user}} (ID: {{userId}})",
+    "modalTitle": "{{action}} Reason"
+  },
+  "modmailSetup": {
+    "modmailSetupExists": "Modmail is already set up for this server.",
+    "modmailSetupInProgress": "Modmail setup is already in progress... Please wait for the current setup to complete.",
+    "modmailSetupSuccess": "Modmail setup completed successfully!\n\n**Details:**\n- **Modmail Logs Channel:** {{modmailLogsChannel}}\n- **Support Role:** {{supportRole}}\n- **Support Category:** {{supportCategory}}"
+  }
+}
