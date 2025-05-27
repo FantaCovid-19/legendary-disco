@@ -81,32 +81,32 @@ export class Logger {
    * Logs a warning message to the console with a specific log level and optional guild ID.
    *
    * @param {string} content - The content of the warning message.
-   * @param {Error} err - The error object.
+   * @param {Error} [err] - The error object.
    * @param {string} [guildId] - The ID of the guild (optional).
    */
   warn(content, err, guildId = null) {
-    this.log(LogLevel.warn, `${content}\n - ${err.message}`, guildId);
+    this.log(LogLevel.warn, err ? `${content}\n - ${err.message}` : content, guildId);
   }
 
   /**
    * Logs an error message to the console with a specific log level and optional guild ID.
    *
    * @param {string} content - The content of the error message.
-   * @param {Error} err - The error object.
+   * @param {Error} [err] - The error object.
    * @param {string} [guildId] - The ID of the guild (optional).
    */
   error(content, err, guildId = null) {
-    this.log(LogLevel.error, `${content}\n - ${err.message}`, guildId);
+    this.log(LogLevel.error, err ? `${content}\n - ${err.message}` : content, guildId);
   }
 
   /**
    * Logs a fatal error message to the console with a specific log level and optional guild ID.
    *
    * @param {string} content - The content of the error message.
-   * @param {Error} err - The error object.
+   * @param {Error} [err] - The error object.
    * @param {string} [guildId] - The ID of the guild (optional).
    */
   fatal(content, err, guildId = null) {
-    this.log(LogLevel.fatal, `${content}\n - ${err.message}`, guildId);
+    this.log(LogLevel.fatal, err ? `${content}\n - ${err.message}` : content, guildId);
   }
 }
