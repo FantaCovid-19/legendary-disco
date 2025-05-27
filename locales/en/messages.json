@@ -40,10 +40,13 @@
       "uknownGuild": "Unknown Server",
       "threadClose": "Modmail thread closed successfully. Time taken: 5 seconds."
     },
-    "selectGuilds": {
-      "title": "Select Server",
-      "description": "Please select a server to use modmail. Use the buttons below to select a server.",
-      "noGuilds": "You have not selected any server. Please select a server to use modmail."
+    "seletedGuilds": {
+      "content": "## Select a Server\nPlease select a server to use modmail. You can select a server by clicking on the button below.\nGuilds actually selected: **{{guilds}}**\n\n Page: **{{page}}**/**{{totalPages}}**",
+      "notGuildSelected": "No server selected.",
+      "selectButton": "Select Guild",
+      "footerContent": "-# Select a guild to send modmail messages to. Use the buttons below to navigate through the pages.",
+      "nextPage": "Next Page",
+      "previousPage": "Previous Page"
     }
   }
 }
