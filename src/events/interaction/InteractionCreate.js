@@ -1,5 +1,8 @@
 import { Events, MessageFlags } from 'discord.js';
 
+import { Logger } from '#utils/Logger.js';
+const logger = new Logger('InteractionCreate');
+
 export default class InteractionCreate {
   name = Events.InteractionCreate;
   once = false;
@@ -16,9 +19,9 @@ export default class InteractionCreate {
 
     try {
       await command.execute(interaction);
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
       await interaction.reply({ content: 'There was an error while executing this command', flags: MessageFlags.Ephemeral });
+      logger.error(`Error executing command ${interaction.commandName}`, err, interaction.guildId);
     }
   }
 }
