@@ -47,6 +47,7 @@
       "footerContent": "-# Select a guild to send modmail messages to. Use the buttons below to navigate through the pages.",
       "nextPage": "Next Page",
       "previousPage": "Previous Page"
-    }
+    },
+    "selectGuildMessage": "Guild **{{guild}}** ({{guildId}}) has been selected for modmail. You can now send modmail messages to this server via direct message."
   }
 }
