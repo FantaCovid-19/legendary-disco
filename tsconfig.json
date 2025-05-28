@@ -11,8 +11,16 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
 
-    "outDir": "dist"
+    "outDir": "dist",
+
+    "baseUrl": ".",
+    "paths": {
+      "#structures/*": ["src/structures/*"],
+      "#utils/*": ["src/utils/*"],
+      "#models/*": ["src/models/*"]
+    }
   },
+
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist", "src/**/*.test.ts"]
 }
