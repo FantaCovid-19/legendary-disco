@@ -1,8 +1,8 @@
-import { ContainerBuilder, Events, MessageFlags, TextDisplayBuilder } from 'discord.js';
+import { ContainerBuilder, Events, Interaction, MessageFlags, TextDisplayBuilder } from 'discord.js';
 import { t } from 'i18next';
 
-import { changePage, getPage, setSelectedGuild } from '#utils/ModmailStore.js';
-import { Logger } from '#utils/Logger.js';
+import { changePage, getPage, setSelectedGuild } from '#utils/ModmailStore';
+import { Logger } from '#utils/Logger';
 
 const logger = new Logger('SelectModmail');
 
@@ -10,11 +10,7 @@ export default class SelectModmail {
   name = Events.InteractionCreate;
   once = false;
 
-  /**
-   * @param {import('discord.js').Interaction} interaction
-   * @returns {Promise<void>}
-   */
-  async execute(interaction) {
+  async execute(interaction: Interaction) {
     if (!interaction.isButton()) return;
 
     try {
@@ -24,7 +20,7 @@ export default class SelectModmail {
         const selectedGuild = interaction.client.guilds.cache.get(guildId);
 
         const container = new ContainerBuilder();
-        const text = new TextDisplayBuilder().setContent(t('messages:modmail.selectGuildMessage', { guildId, guild: selectedGuild.name }));
+        const text = new TextDisplayBuilder().setContent(t('messages:modmail.selectGuildMessage', { guildId, guild: selectedGuild!.name }));
 
         container.addTextDisplayComponents(text);
 
