@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '#utils/Database.js';
+import { sequelize } from '#utils/Database';
 
 const Modmail = sequelize.define(
   'modmail',
