@@ -1,10 +1,20 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, EmbedBuilder, Events, PermissionFlagsBits } from 'discord.js';
+import {
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ChannelType,
+  EmbedBuilder,
+  Events,
+  Message,
+  PermissionFlagsBits,
+  TextChannel,
+} from 'discord.js';
 import { t } from 'i18next';
 
-import { Logger } from '#utils/Logger.js';
-import ModmailConfig from '#models/ModmailConfig.js';
-import Modmail from '#models/Modmail.js';
-import { getSelectedGuild } from '#utils/ModmailStore.js';
+import { Logger } from '#utils/Logger';
+import ModmailConfig from '#models/ModmailConfig';
+import Modmail from '#models/Modmail';
+import { getSelectedGuild } from '#utils/ModmailStore';
 
 const logger = new Logger('DMModmail');
 
@@ -12,11 +22,7 @@ export default class DMModmail {
   name = Events.MessageCreate;
   once = false;
 
-  /**
-   * @param {import('discord.js').Message} message
-   * @returns {Promise<void>}
-   */
-  async execute(message) {
+  async execute(message: Message) {
     const prefix = process.env.PREFIX || '!';
     if (message.content.startsWith(prefix) || message.author.bot || message.channel.type !== ChannelType.DM) return;
 
@@ -27,14 +33,14 @@ export default class DMModmail {
       const guild = await message.client.guilds.fetch(selectedGuildId);
       if (!guild) return await message.reply(t('messages:modmail.dm.guildNotFound'));
 
-      const modmailConfig = await ModmailConfig.findOne({ where: { guildId: guild.id } });
+      const modmailConfig: any = await ModmailConfig.findOne({ where: { guildId: guild.id } });
       if (!modmailConfig) return await message.reply(t('messages:modmail.dm.noConfig', { guild: guild.name }));
 
       const member = await guild.members.fetch(message.author.id);
       if (!member) return await message.reply(t('messages:modmail.dm.memberNotFound'));
 
       if (member) {
-        const activeThread = await Modmail.findOne({ where: { userId: message.author.id, guildId: guild.id } });
+        const activeThread: any = await Modmail.findOne({ where: { userId: message.author.id, guildId: guild.id } });
 
         if (activeThread) {
           const thread = await message.client.channels.fetch(activeThread.channelId);
@@ -48,9 +54,9 @@ export default class DMModmail {
               .setFooter({ text: t('messages:modmail.dm.footer', { userId: message.author.id }) })
               .setTimestamp();
 
-            if (message.attachments.size > 0) embed.setImage(message.attachments.first().url).startsWith('image/');
+            if (message.attachments.size > 0) embed.setImage(message.attachments.first()!.url);
 
-            return await thread.send({ embeds: [embed] });
+            return await (thread as TextChannel).send({ embeds: [embed] });
           }
         }
       }
@@ -92,7 +98,7 @@ export default class DMModmail {
       await threadChannel.send({
         content: t('messages:modmail.controlPanel.content', { user: message.author.username, userId: message.author.id }),
         embeds: [controlPanelEmbed],
-        components: [controlPanelRow],
+        components: [controlPanelRow.toJSON()],
       });
 
       await Modmail.create({
@@ -109,15 +115,12 @@ export default class DMModmail {
         .setFooter({ text: t('messages:modmail.dm.footer', { userId: message.author.id }) })
         .setTimestamp();
 
-      if (message.attachments.size > 0) initialEmbed.setImage(message.attachments.first().url).startsWith('image/');
+      if (message.attachments.size > 0) initialEmbed.setImage(message.attachments.first()!.url);
 
       await threadChannel.send({ embeds: [initialEmbed] });
       await message.reply(t('messages:modmail.dm.successfullySent', { user: message.author.username, guild: guild.name }));
     } catch (err) {
-      console.error('Error fetching commands:', err);
+      logger.error('Failed to open modmail thread', err);
     }
-  }
-  catch(err) {
-    logger.error('Failed to open modmail thread', err);
   }
 }
