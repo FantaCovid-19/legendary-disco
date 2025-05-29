@@ -1,17 +1,15 @@
-import { Events, MessageFlags } from 'discord.js';
+import { Events, Interaction, MessageFlags } from 'discord.js';
 
 import { Logger } from '#utils/Logger.js';
+import { ExtendedClient } from '#structures/ExtendedClient';
+
 const logger = new Logger('InteractionCreate');
 
 export default class InteractionCreate {
   name = Events.InteractionCreate;
   once = false;
 
-  /**
-   * @param {import('discord.js').Interaction} interaction
-   * @returns {Promise<void>}
-   */
-  async execute(interaction) {
+  async execute(interaction: Interaction & { client: ExtendedClient }) {
     if (!interaction.isChatInputCommand()) return;
 
     const command = interaction.client.slashCommands.get(interaction.commandName);
