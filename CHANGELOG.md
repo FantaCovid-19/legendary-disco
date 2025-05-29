@@ -1,5 +1,35 @@
 # JSF Changelog
 
+## [1.1.0](https://github.com/FantaCovid-19/legendary-disco/compare/v1.0.0...v1.1.0) (2025-05-29)
+
+### ✨ Features
+
+* ✨ adds path aliases for modules ([22b30b8](https://github.com/FantaCovid-19/legendary-disco/commit/22b30b89bcae50afababd97758c7f2fae141a5d6))
+* ✨ adds tsconfig for TypeScript configuration ([f9d7b0b](https://github.com/FantaCovid-19/legendary-disco/commit/f9d7b0be4fcdb641e526a8b0e9a5fc9f16582a62))
+* ✨ configures project for development with TS ([1391b98](https://github.com/FantaCovid-19/legendary-disco/commit/1391b98d9a07c71bebb05f1ed730696bcc267328))
+* ✨ defines base command structure ([970bd6c](https://github.com/FantaCovid-19/legendary-disco/commit/970bd6c420ab83d1bf8364e6b0e9af485ef84014))
+
+### 🐛 Bug Fixes
+
+* **ready:** 🐛 improves client typing and imports ([a161e10](https://github.com/FantaCovid-19/legendary-disco/commit/a161e108ec2a6766be2772dc27dbadb5ad77b9b8))
+* 🐛 improves command execution error handling ([21be77d](https://github.com/FantaCovid-19/legendary-disco/commit/21be77dfe84a681db3b12eb0b48c887f19466b37))
+* **modmail:** 🐛 updates change page logic ([d8ae8e9](https://github.com/FantaCovid-19/legendary-disco/commit/d8ae8e96efd816f4a3de7d34c1d5e8f7c2ecffc8))
+
+### ♻️ Code Refactoring
+
+* ♻️ adapts client structure to TypeScript ([1f74fc9](https://github.com/FantaCovid-19/legendary-disco/commit/1f74fc99b33962ec287d93ec60471888df28a9da))
+* **modmail:** ♻️ convert to TypeScript ([b28bdf9](https://github.com/FantaCovid-19/legendary-disco/commit/b28bdf902bd18efe9a78ec2e9d3aa8325d66dd7b))
+* ♻️ converts I18next.js to TypeScript ([2b467d6](https://github.com/FantaCovid-19/legendary-disco/commit/2b467d6d861f1c1959642835ebb78c4f82bc104a))
+* ♻️ converts interaction event to TypeScript ([b79cf6b](https://github.com/FantaCovid-19/legendary-disco/commit/b79cf6b6269766519f529f7f7063817dfb6c02aa))
+* ♻️ converts logger to TypeScript ([e44f778](https://github.com/FantaCovid-19/legendary-disco/commit/e44f778dedcc145d9d5060e5fccea332ef4282a0))
+* ♻️ converts modmail events to TS ([f4e19a5](https://github.com/FantaCovid-19/legendary-disco/commit/f4e19a5fd67206a787228300c80e9bacc5aff102))
+* ♻️ converts modmail events to typescript ([be9555a](https://github.com/FantaCovid-19/legendary-disco/commit/be9555a9b33d5e3a621e92f87905aa5193b716df))
+* ♻️ migrates to TypeScript ([d7a7d6e](https://github.com/FantaCovid-19/legendary-disco/commit/d7a7d6e8a9ad65690d9b167271db550780cc335a))
+* ♻️ migrates Util.js to Util.ts ([5dd0c23](https://github.com/FantaCovid-19/legendary-disco/commit/5dd0c23ca2df3ebbb114843ad1bcb8e423acb481))
+* ♻️ moves gitkeep to client commands ([c2fee99](https://github.com/FantaCovid-19/legendary-disco/commit/c2fee99458d799211b83b3e82f3eeee90e551087))
+* ♻️ rename file to TypeScript ([18e154a](https://github.com/FantaCovid-19/legendary-disco/commit/18e154a99ae9c7051bca578acdc0cacb5e4a0388))
+* ♻️ rename js files to ts ([24ca69f](https://github.com/FantaCovid-19/legendary-disco/commit/24ca69f29c96f1d8c196ee6a4426250150a521af))
+
 ## 1.0.0 (2025-05-28)
 
 ### ✨ Features
