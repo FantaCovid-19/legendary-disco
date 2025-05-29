@@ -3,6 +3,7 @@ import {
   ButtonBuilder,
   ButtonStyle,
   ContainerBuilder,
+  Interaction,
   MediaGalleryBuilder,
   SectionBuilder,
   SeparatorBuilder,
@@ -14,14 +15,7 @@ import { t } from 'i18next';
 const selectedGuilds = new Map();
 const pages = new Map();
 
-/**
- * Sets the selected guild for a user.
- *
- * @param {string} userId - The ID of the user.
- * @param {string} guildId - The ID of the guild to select. If null, it clears the selection for the user.
- * @return {void}
- */
-export function setSelectedGuild(userId, guildId) {
+export function setSelectedGuild(userId: string, guildId: string) {
   if (!guildId) {
     selectedGuilds.delete(userId);
     pages.delete(userId);
@@ -30,36 +24,16 @@ export function setSelectedGuild(userId, guildId) {
   }
 }
 
-/**
- * Gets the selected guild for a user.
- *
- * @param {string} userId - The ID of the user.
- * @return {string|null} - The ID of the selected guild, or null if no guild is selected.
- */
-export function getSelectedGuild(userId) {
+export function getSelectedGuild(userId: string) {
   return selectedGuilds.get(userId);
 }
 
-/**
- * Changes the current page for a user.
- *
- * @param {string} userId - The ID of the user.
- * @param {number} direction - The direction to change the page. Positive for next page, negative for previous page.
- * @return {void}
- */
-export function changePage(userId, direction) {
+export function changePage(userId: string, page: number) {
   const currentPage = pages.get(userId) || 0;
-  pages.set(userId, Math.max(0, currentPage + direction));
+  pages.set(userId, Math.max(0, currentPage + page));
 }
 
-/**
- * Gets the current page of guilds for a user.
- *
- * @param {import('discord.js').Interaction} source - The interaction source.
- * @param {string} userId - The ID of the user.
- * @return {Promise<ContainerBuilder>} - A container with the paginated guilds.
- */
-export async function getPage(source, userId) {
+export async function getPage(source: Interaction, userId: string) {
   const page = pages.get(userId) || 0;
   const guilds = [];
 
@@ -133,7 +107,7 @@ export async function getPage(source, userId) {
         .setDisabled(page + 1 >= totalPages)
     );
 
-    const navRow = new ActionRowBuilder().addComponents(navButtons);
+    const navRow: any = new ActionRowBuilder().addComponents(navButtons);
     container.addSeparatorComponents(separator).addActionRowComponents(navRow);
   }
 
