@@ -1,7 +1,7 @@
-import { MessageFlags, SlashCommandBuilder } from 'discord.js';
+import { ChatInputCommandInteraction, MessageFlags, SlashCommandBuilder } from 'discord.js';
 
-import { getPage } from '#utils/ModmailStore.js';
-import { Logger } from '#utils/Logger.js';
+import { getPage } from '#utils/ModmailStore';
+import { Logger } from '#utils/Logger';
 
 const logger = new Logger('ModmailCommand');
 
@@ -11,10 +11,7 @@ export default class ModmailCommand {
     .setDescription('Modmail command')
     .addSubcommand((group) => group.setName('guilds').setDescription('Select a guild to send a modmail message'));
 
-  /**
-   * @param {import('discord.js').CommandInteraction} interaction
-   */
-  async execute(interaction) {
+  async execute(interaction: ChatInputCommandInteraction) {
     try {
       const row = await getPage(interaction, interaction.user.id);
       return await interaction.reply({ components: [row], flags: MessageFlags.Ephemeral | MessageFlags.IsComponentsV2 });
